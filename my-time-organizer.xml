@@ -10,6 +10,7 @@
 
 <div id="_p_content_div">  
 <label>Event : </label><input type="text" id="event"></input><br/>
+<label>Details : </label><input type="text" id="details"></input><br/>
 <label>Days : </label><input type="text" id="days"></input><br/>
 <label>Hours : </label><input type="text" id="hours"></input><br/>
 <label>Minutes : </label><input type="text" id="mins"></input><br/>
@@ -33,16 +34,24 @@ document.getElementById('event').value=''; document.getElementById('days').value
 
 function save(){
 // the function responsible for saving the data to calendar
-var _event=document.getElementById('event').value;
-var _days=document.getElementById('days').value;
-var _hours=document.getElementById('hours').value;
-var _mins=document.getElementById('mins').value;
+var _event=document.getElementById('event').value; var _days=document.getElementById('days').value; var _hours=document.getElementById('hours').value; var _mins=document.getElementById('mins').value;
+var _details=document.getElementById('details').value;
 var _dt=new Date();
 _dt=_dt.addDays(_days).addHours(_hours).addMins(_mins);
 var ele=document.getElementById('saved_date');
 ele.innerHTML=_dt;
 
+var eventData={ 
+title:_event,
+details:_details,
+startTime: {year: _dt.getYear(), month:_dt.getMonth(), date: _dt.getDate()},
+endTime: {year: _dt.getYear(), month:_dt.getMonth(), date: _dt.getDate()},
+attendees:[{email:'p.c.iyer@gmail.com'}]};
+
+google.calendar.composeEvent(eventData);
 }
+
+
 
 
 
