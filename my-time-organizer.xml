@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-<ModulePrefs title="My Time Organizer" />
+<ModulePrefs title="My Time Organizer">
+<Require feature="locked-domain"/>
+<Require feature="dynamic-height"/>
+<Require feature="opensocial-0.8"/>
+<Require feature="google.calendar-0.5.read"/>
+</ModulePrefs>
 <Content type="html"><![CDATA[
 
 <div id="_p_content_div">  
@@ -10,27 +15,38 @@
 <label>Minutes : </label><input type="text" id="mins"></input><br/>
 <input type="button" id="save" value="Save" onclick="save()"></input>
 <input type="button" id="cancel" value="cancel" onclick="cancel()"></input><br/>
+<div id="saved_date"></div>
+
 </div>
 
 
 
-   <script type="text/javascript">
-  function displayGreeting(){
-    var _p=document.getElementById('_p_content_div');
-   }
-  gadgets.util.registerOnLoadHandler(displayGreeting());
+<script type="text/javascript">
+Date.prototype.addHours=function(h){ var _h=h.ifBlankZero(); this.setTime(this.getTime() + ( _h * 60 * 60 * 1000)); return this; }
+Date.prototype.addDays=function(D){ var _D=D.ifBlankZero(); this.setTime(this.getTime() + ( _D * 24 * 60 * 60 * 1000)); return this; }
+Date.prototype.addMins=function(M){ var _M=M.ifBlankZero(); this.setTime(this.getTime() + (M * 60 * 1000)); }
+String.prototype.ifBlankZero=function(){ if( this.replace(/\s/g,"") == ""){ return 0; } return this; }
 
 function cancel(){
-document.getElementById('event').value='';
-document.getElementById('days').value='';
-document.getElementById('hours').value='';
-document.getElementById('mins').value='';
+document.getElementById('event').value=''; document.getElementById('days').value=''; document.getElementById('hours').value=''; document.getElementById('mins').value='';
 }
 
 function save(){
 // the function responsible for saving the data to calendar
+var _event=document.getElementById('event').value;
+var _days=document.getElementById('days').value;
+var _hours=document.getElementById('hours').value;
+var _mins=document.getElementById('mins').value;
+var _dt=new Date();
+_dt=_dt.addDays(_days);
+_dt=_dt.addHours(_hours);
+_dt=dt.addMins(_mins);
+var ele=document.getElementById('saved_date');
+ele.innerHTML(_dt);
 
 }
+
+
 
    </script>
 ]]></Content>
