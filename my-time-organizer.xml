@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
 <ModulePrefs title="My Time Organizer">
-<Require feature="locked-domain"/>
 <Require feature="dynamic-height"/>
-<Require feature="opensocial-0.8"/>
-<Require feature="google.calendar-0.5.read"/>
+<Require feature="google.calendar-0.5"/>
 </ModulePrefs>
 <Content type="html"><![CDATA[
 
@@ -44,9 +42,10 @@ ele.innerHTML=_dt;
 var eventData={ 
 title:_event,
 details:_details,
-startTime: {year: _dt.getYear(), month:_dt.getMonth(), date: _dt.getDate()},
-endTime: {year: _dt.getYear(), month:_dt.getMonth(), date: _dt.getDate()},
+startTime: {year: _dt.getFulYear(), month:_dt.getMonth(), date: _dt.getDate()},
+endTime: {year: _dt.getFullYear(), month:_dt.getMonth(), date: _dt.getDate()},
 attendees:[{email:'p.c.iyer@gmail.com'}]};
+console & console.info( eventData);
 
 google.calendar.composeEvent(eventData);
 }

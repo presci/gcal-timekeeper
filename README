@@ -1,1 +1,4 @@
 The gcal-timekeeper project is google gadget project. This project creates the events in the google calendar. 
+
+
+https://www.google.com/calendar/render?gadgeturl=https://raw.github.com/presci/gcal-timekeeper/master/my-time-organizer.xml&duffy=14
