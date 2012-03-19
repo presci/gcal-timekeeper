@@ -40,7 +40,7 @@ var _mins=document.getElementById('mins').value;
 var _dt=new Date();
 _dt=_dt.addDays(_days);
 _dt=_dt.addHours(_hours);
-_dt=dt.addMins(_mins);
+_dt=_dt.addMins(_mins);
 var ele=document.getElementById('saved_date');
 ele.innerHTML(_dt);
 
