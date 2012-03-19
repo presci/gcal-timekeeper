@@ -42,7 +42,7 @@ _dt=_dt.addDays(_days);
 _dt=_dt.addHours(_hours);
 _dt=_dt.addMins(_mins);
 var ele=document.getElementById('saved_date');
-ele.innerHTML(_dt);
+ele.innerHTML=_dt;
 
 }
 
