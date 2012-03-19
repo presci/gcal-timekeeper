@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="My Time Organizer" />
+<Content type="html"><![CDATA[
+
+<div id="_p_content_div">  
+<label>Event : </label><input type="text" id="event"></input><br/>
+<label>Days : </label><input type="text" id="days"></input><br/>
+<label>Hours : </label><input type="text" id="hours"></input><br/>
+<label>Minutes : </label><input type="text" id="mins"></input><br/>
+<input type="button" id="save" value="Save" onclick="save()"></input>
+<input type="button" id="cancel" value="cancel" onclick="cancel()"></input><br/>
+</div>
+
+
+
+   <script type="text/javascript">
+  function displayGreeting(){
+    var _p=document.getElementById('_p_content_div');
+   }
+  gadgets.util.registerOnLoadHandler(displayGreeting());
+
+function cancel(){
+document.getElementById('event').value='';
+document.getElementById('days').value='';
+document.getElementById('hours').value='';
+document.getElementById('mins').value='';
+}
+
+function save(){
+// the function responsible for saving the data to calendar
+
+}
+
+   </script>
+]]></Content>
+</Module>
