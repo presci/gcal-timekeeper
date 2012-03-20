@@ -43,7 +43,7 @@ var eventData={
 title:_event,
 details:_details,
 location: 'computer',
-startTime: {year: _dt.getFulYear(), month:_dt.getMonth(), date: _dt.getDate()},
+startTime: {year: _dt.getFullYear(), month:_dt.getMonth(), date: _dt.getDate()},
 endTime: {year: _dt.getFullYear(), month:_dt.getMonth(), date: _dt.getDate()},
 attendees:[{email:'p.c.iyer@gmail.com'}]};
 console & console.info( eventData);
