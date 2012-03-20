@@ -43,9 +43,12 @@ var eventData={
 title:_event,
 details:_details,
 location: 'computer',
-startTime: {year: _dt.getFullYear(), month:_dt.getMonth(), date: _dt.getDate()},
-endTime: {year: _dt.getFullYear(), month:_dt.getMonth(), date: _dt.getDate()},
-attendees:[{email:'p.c.iyer@gmail.com'}]};
+allDay: false,
+startTime: {year: _dt.getFullYear(), month:_dt.getMonth(), date: _dt.getDate(), hour:_dt.getHours() , minute:_dt.getMinutes() , second:0},
+endTime: {year: _dt.getFullYear(), month:_dt.getMonth(), date: _dt.getDate(), hour: _dt.getHours(), minute:_dt.getMinutes(), second:0},
+attendees:[{email:'p.c.iyer@gmail.com'}],
+rrule: 'RRULE:FREQ=YEARLY'
+};
 console & console.info( eventData);
 
 google.calendar.composeEvent(eventData);
