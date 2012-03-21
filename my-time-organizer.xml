@@ -42,9 +42,22 @@
 function next(){var ele1 = document.getElementById('time_details'); var ele2=document.getElementById('event_details'); if (ele2){ ele2.style.display='none'; } if ( ele1){ ele1.style.display='block'; } }
 function previous(){ var ele1 = document.getElementById('time_details'); var ele2=document.getElementById('event_details'); if (ele2){ ele2.style.display='block'; } if ( ele1){ ele1.style.display='none'; } }
 
-Date.prototype.addHours=function(h){ var _H=h.ifBlankZero(); this.setTime(this.getTime() + ( _H * 60 * 60 * 1000)); return this; }
-Date.prototype.addDays=function(D){ var _D=D.ifBlankZero(); this.setTime(this.getTime() + ( _D * 24 * 60 * 60 * 1000)); return this; }
-Date.prototype.addMins=function(M){ var _M=M.ifBlankZero(); this.setTime(this.getTime() + (_M * 60 * 1000)); return this; }
+Date.prototype.addHours=function(h){ 
+var _H=h.ifBlankZero(); 
+if (_H==0){ return this; }
+	return new Date(this.getTime() + ( _H * 60 * 60 * 1000)); 
+}
+Date.prototype.addDays=function(D){ 
+	var _D=D.ifBlankZero(); 
+	if ( _D==0) return  this;
+	return new Date (this.getTime() + ( _D * 24 * 60 * 60 * 1000)); 
+}
+Date.prototype.addMins=function(M){ 
+	var _M=M.ifBlankZero(); 
+	if ( _M == 0) return this;
+	return new Date (this.getTime() + (_M * 60 * 1000)); 
+}
+
 String.prototype.ifBlankZero=function(){ if( this.replace(/\s/g,"") == ""){ return 0; } return this; }
 
 function cancel(){
