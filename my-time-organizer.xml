@@ -46,8 +46,7 @@ location: 'computer',
 allDay: false,
 startTime: {year: _dt.getFullYear(), month:_dt.getMonth(), date: _dt.getDate(), hour:_dt.getHours() , minute:_dt.getMinutes() , second:0},
 endTime: {year: _dt.getFullYear(), month:_dt.getMonth(), date: _dt.getDate(), hour: _dt.getHours(), minute:_dt.getMinutes(), second:0},
-attendees:[{email:'p.c.iyer@gmail.com'}],
-rrule: 'RRULE:FREQ=YEARLY'
+attendees:[{email:'p.c.iyer@gmail.com'}]
 };
 console & console.info( eventData);
 
