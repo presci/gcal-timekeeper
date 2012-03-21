@@ -6,7 +6,8 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 <style type="text/css">
-#time_details {display:none}
+#time_details {display:none};
+.debugInfo{display:none};
 </style>
 
 
@@ -26,7 +27,7 @@
 
 </div>
 <input type="button" id="cancel" value="cancel" onclick="cancel()"></input>
-<div id="saved_date"></div>
+<div id="saved_date" class="debugInfo"></div>
 
 </div>
 
