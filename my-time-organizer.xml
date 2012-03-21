@@ -5,22 +5,42 @@
 <Require feature="google.calendar-0.5"/>
 </ModulePrefs>
 <Content type="html"><![CDATA[
+<style type="text/css">
+#time_details {display:none}
+</style>
+
 
 <div id="_p_content_div">  
+<div id="event_details">
 <label>Event : </label><input type="text" id="event"></input><br/>
 <label>Details : </label><input type="text" id="details"></input><br/>
-<label>Days : </label><input type="text" id="days"></input><br/>
-<label>Hours : </label><input type="text" id="hours"></input><br/>
-<label>Minutes : </label><input type="text" id="mins"></input><br/>
+<input type="button" id="next" value="next" onclick="next()"></input><br/>
+</div>
+<div id="time_details">
+<label>Days : </label><input type="text" id="days" class="num"></input><br/>
+<label>Hours : </label><input type="text" id="hours" class="num"></input><br/>
+<label>Minutes : </label><input type="text" id="mins" class="num"></input><br/>
+<input type="button" id="previous" value="previous" onclick="previous()"></input>
 <input type="button" id="save" value="Save" onclick="save()"></input>
-<input type="button" id="cancel" value="cancel" onclick="cancel()"></input><br/>
+<br/>
+
+</div>
+<input type="button" id="cancel" value="cancel" onclick="cancel()"></input>
 <div id="saved_date"></div>
 
 </div>
 
 
 
+
+
+
+
 <script type="text/javascript">
+
+function next(){var ele1 = document.getElementById('time_details'); var ele2=document.getElementById('event_details'); if (ele2){ ele2.style.display='none'; } if ( ele1){ ele1.style.display='block'; } }
+function previous(){ var ele1 = document.getElementById('time_details'); var ele2=document.getElementById('event_details'); if (ele2){ ele2.style.display='block'; } if ( ele1){ ele1.style.display='none'; } }
+
 Date.prototype.addHours=function(h){ var _H=h.ifBlankZero(); this.setTime(this.getTime() + ( _H * 60 * 60 * 1000)); return this; }
 Date.prototype.addDays=function(D){ var _D=D.ifBlankZero(); this.setTime(this.getTime() + ( _D * 24 * 60 * 60 * 1000)); return this; }
 Date.prototype.addMins=function(M){ var _M=M.ifBlankZero(); this.setTime(this.getTime() + (_M * 60 * 1000)); return this; }
@@ -31,7 +51,6 @@ document.getElementById('event').value=''; document.getElementById('days').value
 }
 
 function save(){
-// the function responsible for saving the data to calendar
 var _event=document.getElementById('event').value; var _days=document.getElementById('days').value; var _hours=document.getElementById('hours').value; var _mins=document.getElementById('mins').value;
 var _details=document.getElementById('details').value;
 var _dt=new Date();
@@ -48,8 +67,6 @@ startTime: {year: _dt.getFullYear(), month:_dt.getMonth(), date: _dt.getDate(), 
 endTime: {year: _dt.getFullYear(), month:_dt.getMonth(), date: _dt.getDate(), hour: _dt.getHours(), minute:_dt.getMinutes(), second:0},
 attendees:[{email:'p.c.iyer@gmail.com'}]
 };
-console & console.info( eventData);
-
 google.calendar.composeEvent(eventData);
 }
 
