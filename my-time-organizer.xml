@@ -6,8 +6,8 @@
 </ModulePrefs>
 <Content type="html"><![CDATA[
 <style type="text/css">
-#time_details {display:none};
-.debugInfo{display:none};
+#time_details {display:none}
+.debugInfo{display:none}
 </style>
 
 
@@ -48,7 +48,7 @@ Date.prototype.addMins=function(M){ var _M=M.ifBlankZero(); this.setTime(this.ge
 String.prototype.ifBlankZero=function(){ if( this.replace(/\s/g,"") == ""){ return 0; } return this; }
 
 function cancel(){
-document.getElementById('event').value=''; document.getElementById('days').value=''; document.getElementById('hours').value=''; document.getElementById('mins').value='';
+document.getElementById('event').value=''; document.getElementById('days').value=''; document.getElementById('hours').value=''; document.getElementById('mins').value=''; document.getElementById('details').value=''; previous();
 }
 
 function save(){
