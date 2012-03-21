@@ -7,6 +7,7 @@
 <Content type="html"><![CDATA[
 <style type="text/css">
 #time_details {display:none}
+.debugInfo{display:none}
 </style>
 
 
@@ -14,6 +15,7 @@
 <div id="event_details">
 <label>Event : </label><input type="text" id="event"></input><br/>
 <label>Details : </label><input type="text" id="details"></input><br/>
+<label>Location : </label><input type="text" id="location"></input><br/>
 <input type="button" id="next" value="next" onclick="next()"></input><br/>
 </div>
 <div id="time_details">
@@ -61,12 +63,15 @@ Date.prototype.addMins=function(M){
 String.prototype.ifBlankZero=function(){ if( this.replace(/\s/g,"") == ""){ return 0; } return this; }
 
 function cancel(){
-document.getElementById('event').value=''; document.getElementById('days').value=''; document.getElementById('hours').value=''; document.getElementById('mins').value=''; document.getElementById('details').value=''; previous();
+document.getElementById('event').value=''; document.getElementById('days').value=''; document.getElementById('hours').value=''; document.getElementById('mins').value=''; document.getElementById('details').value=''; 
+document.getElementById('location').value='';
+previous();
 }
 
 function save(){
 var _event=document.getElementById('event').value; var _days=document.getElementById('days').value; var _hours=document.getElementById('hours').value; var _mins=document.getElementById('mins').value;
 var _details=document.getElementById('details').value;
+var _location=document.getElementById('location').value;
 var _dt=new Date();
 _dt=_dt.addDays(_days).addHours(_hours).addMins(_mins);
 var ele=document.getElementById('saved_date');
@@ -75,7 +80,7 @@ ele.innerHTML=_dt;
 var eventData={ 
 title:_event,
 details:_details,
-location: 'computer',
+location: _location,
 allDay: false,
 startTime: {year: _dt.getFullYear(), month:g_month[_dt.getMonth()], date: _dt.getDate(), hour:_dt.getHours() , minute:_dt.getMinutes() , second:0},
 endTime: {year: _dt.getFullYear(), month:g_month[_dt.getMonth()], date: _dt.getDate(), hour: _dt.getHours(), minute:_dt.getMinutes(), second:0},
